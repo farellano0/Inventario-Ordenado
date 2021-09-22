@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario</title>
+</head>
+<body>
+    <style>
+        h1 {
+            text-align: center;
+            color: brown;
+        }
+
+        body {
+            font-family: "Helvetica Neue", Helvetica, sans-serif;
+        }
+
+        label {
+            display: block;
+        }
+
+        input {       
+            padding: 3px;
+            margin: 5px 0;   
+            border-radius: 4px;
+        }
+
+        button { 
+            margin: 5px 0;
+            width: 14%;
+            padding: 5px;
+            display: block;
+        }
+
+        .container {
+            width: 95%;
+            float: left;
+        }
+
+        .details {
+            text-align: center;
+        }
+    </style>
+
+    <h1>Inventario</h1>
+
+    <div class="container">
+        <div id="app">
+            <form>
+                <div>
+                    <label for="txtCode">Código:</label>
+                    <input type="text" name="txtCode" id="txtCode">
+                </div>
+                <div>
+                    <label for="txtName">Nombre del Producto:</label>
+                    <input type="text" name="txtName" id="txtName">
+                </div>
+                <div>
+                    <label for="txtAmount">Cantidad:</label>
+                    <input type="number" name="txtAmount" id="txtAmount">
+                </div>
+                <div>
+                    <label for="txtCost">Costo:</label>
+                    <input type="number" name="txtCost" id="txtCost">
+                </div>
+                <div>
+                    <label for="txtPosition">Costo:</label>
+                    <input type="number" name="txtPosition" id="txtPosition">
+                </div>
+                <div>
+                    <button type="button" id="btnAdd">Añadir</button>
+                    <button type="button" id="btnDlt">Borrar</button>
+                    <button type="button" id="btnSrch">Buscar</button>
+                    <button type="button" id="btnAdd">Listar</button>
+                    <button type="button" id="btnAdd">Listar Inverso</button>
+                    <button type="button" id="btnAdd">Insertar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="details" id="detalles">
+        <h1>Acciones</h1>
+
+    </div>
+    <script src="main.js" type="module"></script>
+</body>
+</html>
