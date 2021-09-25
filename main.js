@@ -9,7 +9,6 @@ class App {
         this.btnSrch = document.getElementById('btnSrch');
         this.btnList = document.getElementById('btnList');
         this.btnListInver = document.getElementById('btnListInverse');
-        this.btnInsert = document.getElementById('btnInsert');
 
         this.actions = document.getElementById('actions')
 
