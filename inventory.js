@@ -73,5 +73,17 @@ export default class Inventory {
             }
         }
         return this._inventory;
-    }    
+    }
+    
+    _getInvertedArray(array){
+        let arr1 = 0;
+        let arr2 = array.length - 1;
+        for(let i = 0; i <= array.length/2; i++){
+            arr1 = array[arr2];
+            array[arr2] = array[i];
+            array[i] = arr1;
+
+            arr2--;
+        }        
+    }
 }
