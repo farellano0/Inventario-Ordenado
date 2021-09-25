@@ -10,7 +10,8 @@ export default class Inventory {
             return false;
         } else {
             if(this._inventory.length < 20){
-                this._inventory.push(product);
+                this._inventory.push(product)
+                return true;
             } else {
                 return false;
             }

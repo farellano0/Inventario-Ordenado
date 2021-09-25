@@ -11,7 +11,7 @@ class App {
         this.btnListInver = document.getElementById('btnListInverse');
         this.btnInsert = document.getElementById('btnInsert');
 
-        this.details = document.getElementById('details')
+        this.actions = document.getElementById('actions')
 
         this.btnAdd.addEventListener('click', this.addProduct)
     }
@@ -20,8 +20,20 @@ class App {
         let product = this._createProduct();
 
         if(!product){
-            return this.details.innerHTML = 'Todos los campos son requeridos';
+            this.actions.innerHTML = "";
+            return this.actions.innerHTML += 'No se registró el producto. Todos los campos son requeridos.';
         }
+
+        let added = this.inventory.add(product);
+        console.log(added);
+
+        if(!added){
+            this.actions.innerHTML = "";
+            return this.actions.innerHTML = "No se registró el producto. Producto ya Registrado.";
+        } 
+        
+        this.actions.innerHTML = "";
+        return this.actions.innerHTML = `Se agrego nuevo producto. El producto ${product.getCode()} fue registrado con éxito.`;
     }
 
     //Private
