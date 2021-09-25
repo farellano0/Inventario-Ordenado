@@ -4,7 +4,11 @@ export default class Inventory {
     }
 
     add(product){
-        let pos = this._findProductByCode(product);
+        let code = product.getCode();
+        console.log(code);
+        let pos = this._findProductByCode(code);
+        console.log(pos);
+        
 
         if(pos >= 0){
             return false;
@@ -44,7 +48,6 @@ export default class Inventory {
         }
     }
 
-
     //Clases privadas
 
     _findProductByCode(code){
@@ -69,7 +72,6 @@ export default class Inventory {
                 }
             }
         }
-        
         return this._inventory;
     }    
 }

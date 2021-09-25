@@ -9,7 +9,7 @@ export default class Product {
     //Lectura
 
     getCode(){
-        return this._code;
+        return Number(this._code);
     }
 
     getName(){

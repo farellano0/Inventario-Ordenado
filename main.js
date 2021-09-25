@@ -20,6 +20,7 @@ class App {
 
     addProduct = () => {
         let product = this._createProduct();
+        console.log(product);
 
         if(!product){
             this.actions.innerHTML = "";
@@ -57,7 +58,42 @@ class App {
     }
 
     listProducts = () =>{
-        let products = this.inventory._organizeArrayById();
+        let products = this.inventory._organizeArrayById(this.inventory._inventory);
+        console.log(products);
+        let table = document.getElementById('table');
+        this._cleaTable();
+        this.actions.innerHTML = "";
+
+        console.log(products.length);
+        if(products.length == 0){
+            this.actions.innerHTML = "";
+            return this.actions.innerHTML += `No hay ningún producto registrado`;
+        } else {
+            for(let i = 0; i < products.length; i++){
+
+                let row = table.insertRow(-1);
+                let colCode = row.insertCell(0);
+                let colName = row.insertCell(1);
+                let colAmount = row.insertCell(2);
+                let colCost = row.insertCell(3);
+                let colTotalCost = row.insertCell(4);
+    
+                row.setAttribute('id', `row${products[i].getCode()}`);
+                colCode.setAttribute('id', `colCode${products[i].getCode()}`);
+                colName.setAttribute('id', `colName${products[i].getCode()}`);
+                colAmount.setAttribute('id', `colAmount${products[i].getCode()}`);
+                colCost.setAttribute('id', `colCost${products[i].getCode()}`);
+                colTotalCost.setAttribute('id', `colTotalCost${products[i].getCode()}`);
+    
+                colCode.innerHTML = products[i].getCode();
+                colName.innerHTML = products[i].getName();
+                colAmount.innerHTML = products[i].getAmount();
+                colCost.innerHTML = "$" + products[i].getCost();
+                colTotalCost.innerHTML =  "$" + products[i].getTotalCost();
+            }
+            this.actions.innerHTML += `Se muestra la tabla.`;
+        }
+
     }
 
     //Private
@@ -83,6 +119,10 @@ class App {
         }
 
         return false;
+    }
+    _cleaTable(){
+        let table = document.getElementById('table');
+        table.innerHTML = '<tr><th>Código</th><th>Producto</th><th>Cantidad</th><th>Precio</th><th>Precio Total</th></tr>'
     }
 
 }
