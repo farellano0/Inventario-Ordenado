@@ -6,7 +6,7 @@ class App {
         this.inventory = new Inventory();
         this.btnAdd = document.getElementById('btnRegister');
         this.btnDlt = document.getElementById('btnDelete');
-        this.btnSrch = document.getElementById('bntSrch');
+        this.btnSrch = document.getElementById('btnSrch');
         this.btnList = document.getElementById('btnList');
         this.btnListInver = document.getElementById('btnListInverse');
         this.btnInsert = document.getElementById('btnInsert');
@@ -16,7 +16,8 @@ class App {
         this.btnAdd.addEventListener('click', this.addProduct);
         this.btnDlt.addEventListener('click', this.deleteProduct);
         this.btnList.addEventListener('click', this.listProducts);
-        this.btnListInver.addEventListener('click', this.listInverse)
+        this.btnListInver.addEventListener('click', this.listInverse);
+        this.btnSrch.addEventListener('click', this.searchProduct);
     }
 
     addProduct = () => {
@@ -49,9 +50,11 @@ class App {
             this.actions.innerHTML = "";
             return this.actions.innerHTML += 'No se ha borrado ningún producto. Ingrese un código de producto';
         } else if (!deleteProduct){
+            inpCode.value = "";
             this.actions.innerHTML = "";
             return this.actions.innerHTML += 'No existe el producto que desea borrar.';
         } else {
+            inpCode.value = "";
             deleteProduct;
             this.actions.innerHTML = "";
             return this.actions.innerHTML += `El producto ${code} ha sido eliminado exitosamente.`;
@@ -133,6 +136,26 @@ class App {
                 colTotalCost.innerHTML =  "$" + products[i].getTotalCost();
             }
             this.actions.innerHTML += `Se muestra la tabla ordenada invertida.`;
+        }
+    }
+
+    searchProduct = () => {
+        let inpCode = document.getElementById('insertCodeSearch');
+        let code = inpCode.value;
+        let searchProduct = this.inventory.search(code);
+        
+
+        if(code == ""){
+            this.actions.innerHTML = "";
+            return this.actions.innerHTML += 'Ingrese un código de producto';
+        } else if(!searchProduct){
+            inpCode.value = "";
+            this.actions.innerHTML = "";
+            return this.actions.innerHTML += `No se encontró ningún producto con ese código.`;
+        } else {
+            inpCode.value = "";
+            this.actions.innerHTML = "";
+            this.actions.innerHTML += searchProduct;
         }
     }
 
