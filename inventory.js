@@ -27,7 +27,9 @@ export default class Inventory {
             for(let i = pos; i < this._inventory.length-1; i++){
                 this._inventory[i] = this._inventory[i + 1]
             }
-            return this._inventory.pop()
+            this._inventory.pop()
+
+            return true;
         }
     }
 
@@ -69,12 +71,5 @@ export default class Inventory {
         }
         
         return this._inventory;
-    }
-
-    _ordenarAsc(b, a){
-        
-        return a-b;
-    }
-
-    
+    }    
 }

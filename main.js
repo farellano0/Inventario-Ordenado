@@ -5,7 +5,7 @@ class App {
     constructor(){
         this.inventory = new Inventory();
         this.btnAdd = document.getElementById('btnRegister');
-        this.btnDlt = document.getElementById('bntDelete');
+        this.btnDlt = document.getElementById('btnDelete');
         this.btnSrch = document.getElementById('bntSrch');
         this.btnList = document.getElementById('btnList');
         this.btnListInver = document.getElementById('btnListInverse');
@@ -13,7 +13,9 @@ class App {
 
         this.actions = document.getElementById('actions')
 
-        this.btnAdd.addEventListener('click', this.addProduct)
+        this.btnAdd.addEventListener('click', this.addProduct);
+        this.btnDlt.addEventListener('click', this.deleteProduct);
+        this.btnList.addEventListener('click', this.listProducts);
     }
 
     addProduct = () => {
@@ -34,6 +36,28 @@ class App {
         
         this.actions.innerHTML = "";
         return this.actions.innerHTML = `Se agrego nuevo producto. El producto ${product.getCode()} fue registrado con éxito.`;
+    }
+
+    deleteProduct = () => {
+        let inpCode = document.getElementById('insertCode');
+        let code = inpCode.value;
+        let deleteProduct = this.inventory.delete(code);
+
+        if(code == ""){
+            this.actions.innerHTML = "";
+            return this.actions.innerHTML += 'No se ha borrado ningún producto. Ingrese un código de producto';
+        } else if (!deleteProduct){
+            this.actions.innerHTML = "";
+            return this.actions.innerHTML += 'No existe el producto que desea borrar.';
+        } else {
+            deleteProduct;
+            this.actions.innerHTML = "";
+            return this.actions.innerHTML += `El producto ${code} ha sido eliminado exitosamente.`;
+        }
+    }
+
+    listProducts = () =>{
+        let products = this.inventory._organizeArrayById();
     }
 
     //Private
