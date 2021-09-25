@@ -34,6 +34,16 @@
             display: block;
         }
 
+        table {
+            width: 60%;
+            float: left;
+        }
+
+        .details{
+            width: 30%;
+            float: right;
+        }
+
         .container {
             width: 95%;
             float: left;
@@ -42,6 +52,13 @@
         .details {
             text-align: center;
         }
+        
+        .button{
+            font-weight: bold;
+            width: 150px;
+        }
+
+         
     </style>
 
     <h1>Inventario</h1>
@@ -69,20 +86,36 @@
                     <label for="txtPosition">Costo:</label>
                     <input type="number" name="txtPosition" id="txtPosition">
                 </div>
-                <div>
-                    <button type="button" id="btnAdd">Añadir</button>
-                    <button type="button" id="btnDlt">Borrar</button>
-                    <button type="button" id="btnSrch">Buscar</button>
-                    <button type="button" id="btnAdd">Listar</button>
-                    <button type="button" id="btnAdd">Listar Inverso</button>
-                    <button type="button" id="btnAdd">Insertar</button>
-                </div>
+                <div class="field">
+                    <input class="button" id="btnRegister" type="button" value="Registrar" />
+                    <br>
+                    <input class="button" id="btnDelete" type="button" value="Borrar" />
+                    <input id="insertCode" type="number" placeholder="Código de producto">
+                    <br>
+                    <input class="button" id="btnInsert" type="button" value="Insertar" />
+                    <input id="insertValue" type="number" placeholder="Valor a insertar">
+                    <br>
+                    <input class="button" id="btnList" type="button" value="Listar" />
+                    <input class="button" id="btnListInverse" type="button" value="Listar Inverso" />
+                  </div>
             </form>
         </div>
     </div>
-    <div class="details" id="detalles">
+    <div class="details" id="details">
         <h1>Acciones</h1>
 
+    </div>
+    <div>
+        <h1>Tabla de Productos</h1>
+        <table>
+            <tr>
+                <th>Código</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Precio Total</th>
+            </tr>
+        </table>
     </div>
     <script src="main.js" type="module"></script>
 </body>
